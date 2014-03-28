@@ -7,10 +7,12 @@ class CreateTrips < ActiveRecord::Migration
       t.integer :price
       t.integer :passengers
       t.text :description
-
-      t.belongs_to :user_trip
-
       t.timestamps
+    end
+
+    create_table :user_trips, id: false  do |t|
+      t.belongs_to :user
+      t.belongs_to :trip
     end
   end
 end

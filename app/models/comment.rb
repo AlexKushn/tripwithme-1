@@ -1,3 +1,3 @@
 class Comment < ActiveRecord::Base
-  belongs_to :user_trip
+  belongs_to :trip
 end

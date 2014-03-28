@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323223513) do
+ActiveRecord::Schema.define(version: 20140323213431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cars", force: true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.integer  "sits"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "comments", force: true do |t|
+    t.integer  "trip_id"
     t.string   "title"
     t.text     "text"
-    t.integer  "trip_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,21 +39,19 @@ ActiveRecord::Schema.define(version: 20140323223513) do
     t.integer  "price"
     t.integer  "passengers"
     t.text     "description"
-    t.integer  "user_trip_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "user_trips", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "user_trips", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "trip_id"
   end
 
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "surname"
     t.integer  "phone_num"
-    t.integer  "user_trip_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
