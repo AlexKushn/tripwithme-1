@@ -1,4 +1,5 @@
 Tripwithme::Application.routes.draw do
+  devise_for :users
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -14,7 +15,10 @@ Tripwithme::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  resources :cars
+  resources :trips
+  resources :users
+  resources :comments
   # Example resource route with options:
   #   resources :products do
   #     member do

@@ -4,9 +4,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :surname
       t.integer :phone_num
-
-      t.belongs_to :user_trip
-
       t.timestamps
     end
   end
