@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :trip do
     start { Faker::Address.city }
     stop  { Faker::Address.city }
+
     start_time { Date.today + rand(20) }
     price { rand(10) }
     passengers { rand(5) }
