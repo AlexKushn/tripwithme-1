@@ -20,5 +20,6 @@ doc/
 .ruby-version
 .project
 .DS_Store
+app/.DS_Store
 .secret
 
