@@ -7,6 +7,7 @@ gem 'pg'
 gem 'cancancan', '~> 1.7'
 gem 'devise'
 gem 'simple_form'
+gem 'kaminari', '~> 0.15.1'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'

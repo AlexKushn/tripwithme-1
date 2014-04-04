@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  #before_action :set_user, only: [:show, :edit, :update, :destroy]
+   load_and_authorize_resource param_method: :user_params
   # GET /users
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   # GET /users/1
@@ -41,8 +41,14 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+
+    if (current_user == @user) && (current_user.admin?)
+      flash[:error] = "Can not delete own admin account!"
+    else
+      @user.destroy
+      flash[:success] = "User destroyed."
+    end
+    redirect_to users_url
   end
 
   private
@@ -54,5 +60,9 @@ class UsersController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def user_params
       params.require(:user).permit(:name, :surname, :phone_num)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end
