@@ -1,6 +1,10 @@
 Tripwithme::Application.routes.draw do
   devise_for :users
   get "welcome/index"
+  match '/help',      to:  'welcome#help',      via: 'get'
+  match '/about',     to:  'welcome#about',     via: 'get'
+  match '/contact',   to:  'welcome#contact',   via: 'get'
+  match '/sign_in',   to:  'users#sign_in',     via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
