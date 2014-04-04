@@ -41,14 +41,8 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-
-    if (current_user == @user) && (current_user.admin?)
-      flash[:error] = "Can not delete own admin account!"
-    else
-      @user.destroy
-      flash[:success] = "User destroyed."
-    end
-    redirect_to users_url
+    @user.destroy
+    redirect_to users_url, notice: 'User was successfully destroyed'
   end
 
   private
@@ -60,9 +54,5 @@ class UsersController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def user_params
       params.require(:user).permit(:name, :surname, :phone_num)
-    end
-
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
     end
 end
