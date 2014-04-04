@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.4'
-#gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap-sass', '~> 3.1.1'
 #gem 'bcrypt-ruby', '~> 3.1.7'
 gem 'pg'
 gem 'cancancan', '~> 1.7'
