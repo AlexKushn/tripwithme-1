@@ -1,5 +1,5 @@
 Tripwithme::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :path => '', :path_names => { :sign_in => 'login', :sign_out => 'logout' }
   get "welcome/index"
   match '/help',      to:  'welcome#help',      via: 'get'
   match '/about',     to:  'welcome#about',     via: 'get'
