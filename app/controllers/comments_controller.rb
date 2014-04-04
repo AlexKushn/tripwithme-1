@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!, except: [:show, :index]
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments

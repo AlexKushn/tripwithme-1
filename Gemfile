@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.2'
-gem 'bootstrap-sass', '2.3.2.0'
-gem 'bcrypt-ruby', '3.1.2'
+gem 'rails', '4.0.4'
+#gem 'bootstrap-sass', '2.3.2.0'
+#gem 'bcrypt-ruby', '~> 3.1.7'
 gem 'pg'
-#gem 'pg', '0.15.1'
+gem 'cancancan', '~> 1.7'
 gem 'devise'
+gem 'simple_form'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'
@@ -24,7 +25,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'spork'
-  gem 'database_cleaner', '1.0.0.RC1'
+  gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'webmock'
   # The following optional lines are part of the advanced setup. 
@@ -44,15 +45,15 @@ group :test do
   # gem 'wdm', '0.1.0'
 end
 
-gem 'sass-rails', '4.0.1'
-gem 'uglifier', '2.1.1'
-gem 'coffee-rails', '4.0.1'
-gem 'jquery-rails', '3.0.4'
-gem 'turbolinks', '1.1.1'
-gem 'jbuilder', '1.0.2'
+gem 'sass-rails', '~> 4.0.2'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 1.2'
 
 group :doc do
-  gem 'sdoc', '0.3.20', :require=>false
+  gem 'sdoc', :require=>false
 end
 
 group :production do
