@@ -21,8 +21,10 @@
   </div>
   <div class="field">
     <%= f.label :phone_num %><br>
-    <%= f.number_field :phone_num %>
+    <%= f.text_field :phone_num %>
   </div>
+
+  <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
   <div class="actions">
     <%= f.submit %>
   </div>
