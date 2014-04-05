@@ -6,7 +6,7 @@ namespace :db do
       name = Faker::Name.name
       surname = Faker::Name.name
       phone_num = Faker::Number.number(8)
-      email = "example-#{n+511}@railstutorial.org"
+      email = "example-#{ n+1 }@railstutorial.org"
       password = "password"
       role = "passenger"
       User.create!(name: name,

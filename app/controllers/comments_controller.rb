@@ -1,9 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+
+  load_and_authorize_resource param_method: :comment_params
 
   # GET /comments
   def index
-    @comments = Comment.created_before(Time.now).all
+    @comments = Comment.created_before(Time.now).includes(:author)
   end
 
   # GET /comments/1
@@ -21,36 +22,31 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
 
     if @comment.save
-      redirect_to @comment, notice: 'Comment was successfully created.'
+      redirect_to comments_path
     else
-      render action: 'new'
+      render :new
     end
   end
 
   # PATCH/PUT /comments/1
   def update
     if @comment.update(comment_params)
-      redirect_to @comment, notice: 'Comment was successfully updated.'
+      redirect_to comments_path
     else
-      render action: 'edit'
+      render :edit
     end
   end
 
   # DELETE /comments/1
   def destroy
     @comment.destroy
-    redirect_to comments_url, notice: 'Comment was successfully destroyed.'
+    redirect_to comments_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
-
     # Only allow a trusted parameter "white list" through.
     def comment_params
       params.require(:comment).permit(:title, :text, :author_id)
