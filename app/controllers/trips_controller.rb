@@ -1,10 +1,10 @@
 class TripsController < ApplicationController
-  before_filter :authenticate_user!, except: [:show, :index]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy]
+
+  load_and_authorize_resource param_method: :trip_params
 
   # GET /trips
   def index
-    @trips = Trip.all
+    @trips = Trip.includes(:users)
   end
 
   # GET /trips/1
@@ -25,35 +25,30 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
 
     if @trip.save
-      redirect_to @trip, notice: 'Trip was successfully created.'
+      redirect_to trips_path
     else
-      render action: 'new'
+      render :new
     end
   end
 
   # PATCH/PUT /trips/1
   def update
     if @trip.update(trip_params)
-      redirect_to @trip, notice: 'Trip was successfully updated.'
+      redirect_to trips_path
     else
-      render action: 'edit'
+      render :edit
     end
   end
 
   # DELETE /trips/1
   def destroy
     @trip.destroy
-    redirect_to trips_url, notice: 'Trip was successfully destroyed.'
+    redirect_to trips_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_trip
-      @trip = Trip.find(params[:id])
-    end
-
     # Only allow a trusted parameter "white list" through.
     def trip_params
-      params.require(:trip).permit(:start, :stop, :start_time, :price, :passengers, :description)
+      params.require(:trip).permit(:start, :stop, :start_time, :price, :passengers, :description, :rating)
     end
 end

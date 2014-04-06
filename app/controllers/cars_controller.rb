@@ -1,10 +1,10 @@
 class CarsController < ApplicationController
-  before_filter :authenticate_user!, except: [:show, :index]
-  before_action :set_car, only: [:show, :edit, :update, :destroy]
+
+  load_and_authorize_resource param_method: :car_params
 
   # GET /cars
   def index
-    @cars = Car.all
+    @cars = Car.includes(:driver)
   end
 
   # GET /cars/1
@@ -22,38 +22,34 @@ class CarsController < ApplicationController
 
   # POST /cars
   def create
-    @car = Car.new(car_params)
+    @car = current_user.cars.new(car_params)
 
     if @car.save
-      redirect_to @car, notice: 'Car was successfully created.'
+      redirect_to cars_path
     else
-      render action: 'new'
+      render :new
     end
   end
 
   # PATCH/PUT /cars/1
   def update
     if @car.update(car_params)
-      redirect_to @car, notice: 'Car was successfully updated.'
+      redirect_to cars_path
     else
-      render action: 'edit'
+      render :edit
     end
   end
 
   # DELETE /cars/1
   def destroy
     @car.destroy
-    redirect_to cars_url, notice: 'Car was successfully destroyed.'
+    redirect_to cars_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_car
-      @car = Car.find(params[:id])
-    end
 
     # Only allow a trusted parameter "white list" through.
     def car_params
-      params.require(:car).permit(:name, :sits, :user_id)
+      params.require(:car).permit(:name, :sits, :driver_id)
     end
 end
