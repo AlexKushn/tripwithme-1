@@ -1,9 +1,10 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!, except: [:show, :index]
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
   def index
-    @comments = Comment.all
+    @comments = Comment.created_before(Time.now).all
   end
 
   # GET /comments/1

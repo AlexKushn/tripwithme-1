@@ -9,4 +9,20 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Tripwithme::Application.config.secret_key_base = '2be4d7f920b39d6dffeb6375e3c8cd09af6c6f1ed11d494a8cecfb299b5badf689577b6b001dd468d064add018dc0a9dea0f3596e71c4308d82f49810ce11faa'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Tripwithme::Application.config.secret_key_base = secure_token
+
