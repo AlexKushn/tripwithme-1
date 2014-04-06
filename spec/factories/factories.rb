@@ -13,6 +13,12 @@ FactoryGirl.define do
     title { Faker::Lorem.word }
     text  { Faker::Lorem.characters(100) }
     association :author, factory: :trip
+
+    factory :invalid_comment do
+      title nil
+      text nil
+      author_id nil
+    end
   end
 
   factory :user do
@@ -29,10 +35,11 @@ FactoryGirl.define do
     name { Faker::Lorem.word }
     sits { (rand(9) + 1) }
     association :driver, factory: :user
-  end
 
-  factory :invalid_car do
-    name nil
-    sits nil
+    factory :invalid_car do
+      name nil
+      sits nil
+      driver_id nil
+    end
   end
 end

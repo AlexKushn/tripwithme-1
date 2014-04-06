@@ -22,7 +22,7 @@ class TripsController < ApplicationController
 
   # POST /trips
   def create
-    @trip = current_user.trip.new(trip_params)
+    @trip = current_user.trips.new(trip_params)
 
     if @trip.save
       redirect_to trips_path

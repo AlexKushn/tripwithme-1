@@ -22,7 +22,7 @@ class CarsController < ApplicationController
 
   # POST /cars
   def create
-    @car = current_user.car.new(car_params)
+    @car = current_user.cars.new(car_params)
 
     if @car.save
       redirect_to cars_path
