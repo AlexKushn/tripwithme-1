@@ -5,4 +5,5 @@ class Ability
     can [:read, :create], Car
     can [:update, :destroy], Car, driver: user
   end
+
 end

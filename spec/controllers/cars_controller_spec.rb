@@ -10,6 +10,7 @@ describe CarsController do
       sign_in user
     end
 
+
     describe 'GET index' do
       it 'render :index vew' do
         get :index

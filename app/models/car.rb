@@ -1,4 +1,5 @@
 class Car < ActiveRecord::Base
+
   belongs_to :driver, class_name: User
   validates :driver, presence: true
   validates :name, length: { in: 2..15 }

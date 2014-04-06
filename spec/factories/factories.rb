@@ -1,4 +1,5 @@
 FactoryGirl.define do
+
   factory :trip do
     start { Faker::Address.city }
     stop  { Faker::Address.city }
