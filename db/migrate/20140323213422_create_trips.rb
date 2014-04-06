@@ -11,7 +11,7 @@ class CreateTrips < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :trips_users do |t|
+    create_table :trips_users, id: false do |t|
       t.belongs_to :user
       t.belongs_to :trip
     end
