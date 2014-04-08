@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-
+  before_action :authenticate_user!, except: [:index]
   load_and_authorize_resource param_method: :trip_params
 
   # GET /trips

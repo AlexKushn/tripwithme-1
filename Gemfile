@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.4'
-gem 'bootstrap-sass', '~> 3.1.1'
-#gem 'bcrypt-ruby', '~> 3.1.7'
+gem 'twitter-bootstrap-rails'
 gem 'pg'
 gem 'cancancan', '~> 1.7'
 gem 'devise'
@@ -38,7 +37,7 @@ group :test do
   # gem 'growl', '1.0.3'
 
   # Uncomment these lines on Linux.
-  gem 'libnotify', '0.8.0'
+  gem 'libnotify'
 
   # Uncomment these lines on Windows.
   # gem 'rb-notifu', '0.0.4'
