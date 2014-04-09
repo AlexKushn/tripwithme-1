@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.4'
-gem 'bootstrap-sass', '~> 3.1.1'
-#gem 'bcrypt-ruby', '~> 3.1.7'
+gem 'twitter-bootstrap-rails'
 gem 'pg'
 gem 'cancancan', '~> 1.7'
 gem 'devise'
 gem 'simple_form'
 gem 'kaminari', '~> 0.15.1'
+gem 'heroku'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'
@@ -15,12 +16,6 @@ group :development, :test do
   gem 'pry-remote'
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.2.0'
-
-  # The following optional lines are part of the advanced setup.
-  # gem 'guard-rspec', '2.5.0'
-  # gem 'spork-rails', '4.0.0'
-  # gem 'guard-spork', '1.5.0'
-  # gem 'childprocess', '0.3.6'
 end
 
 group :test do
@@ -29,21 +24,9 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'webmock'
-  # The following optional lines are part of the advanced setup. 
-  # gem 'selenium-webdriver', '2.35.1'
-  # gem 'capybara'
-  # gem 'cucumber-rails', :require => false
-
-  # Uncomment this line on OS X.
-  # gem 'growl', '1.0.3'
 
   # Uncomment these lines on Linux.
-  gem 'libnotify', '0.8.0'
-
-  # Uncomment these lines on Windows.
-  # gem 'rb-notifu', '0.0.4'
-  # gem 'win32console', '1.3.2'
-  # gem 'wdm', '0.1.0'
+  gem 'libnotify'
 end
 
 gem 'sass-rails', '~> 4.0.2'

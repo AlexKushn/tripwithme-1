@@ -15,7 +15,6 @@ doc/
 *.swp
 *~
 /.idea
-*.lock
 .ruby-gemset
 .ruby-version
 .project

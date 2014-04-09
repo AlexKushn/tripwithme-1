@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
-   load_and_authorize_resource param_method: :user_params
+  before_action :authenticate_user!
+  load_and_authorize_resource param_method: :user_params
 
   # GET /users
   def index

@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :help, :about, :contact]
   def index
   end
 
