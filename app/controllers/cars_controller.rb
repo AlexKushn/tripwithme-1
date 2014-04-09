@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   load_and_authorize_resource param_method: :car_params
 
   # GET /cars
@@ -50,6 +50,6 @@ class CarsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def car_params
-      params.require(:car).permit(:name, :sits, :driver_id)
+      params.require(:car).permit(:name, :sits)
     end
 end

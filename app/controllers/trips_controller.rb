@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   load_and_authorize_resource param_method: :trip_params
 
   # GET /trips
@@ -22,7 +22,7 @@ class TripsController < ApplicationController
 
   # POST /trips
   def create
-    @trip = Trip.new(trip_params)
+    @trip = current_user.trips.new(trip_params)
 
     if @trip.save
       redirect_to trips_path
