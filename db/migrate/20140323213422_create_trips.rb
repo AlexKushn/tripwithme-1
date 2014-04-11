@@ -4,7 +4,7 @@ class CreateTrips < ActiveRecord::Migration
       t.string :start
       t.string :stop
       t.datetime :start_time
-      t.integer :price
+      t.float :price
       t.integer :passengers
       t.text :description
       t.integer :rating

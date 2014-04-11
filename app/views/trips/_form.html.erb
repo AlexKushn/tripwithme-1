@@ -1,4 +1,4 @@
-<%= form_for(@trip) do |f| %>
+<%= simple_nested_form_for(@trip) do |f| %>
   <% if @trip.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
@@ -11,31 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :start %><br>
-    <%= f.text_field :start %>
-  </div>
-  <div class="field">
-    <%= f.label :stop %><br>
-    <%= f.text_field :stop %>
-  </div>
-  <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.datetime_select :start_time %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :passengers %><br>
-    <%= f.number_field :passengers %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
+    <%= f.input :start %>
+    <%= f.input :stop %>
+    <%= f.input :start_time %>
+    <%= f.input :price %>
+    <%= f.input :passengers %>
+    <%= f.input :description %>
+    <%= f.fields_for :comments do |comment_form| %>
+      <% if comment_form.object.new_record? %>
+        <%= comment_form.association :author, lavel_method: :email,
+                                     value_method: :id %>
+        <%= comment_form.input :title %>
+        <%= comment_form.input :text, as: :text %>
+        <%= comment_form.link_to_remove "Remove this comment" %>
+      <% end %>
+    <% end %>
+    <p><%= f.link_to_add "Add a comment" :comments %></p>
     <%= f.submit %>
-  </div>
 <% end %>
+

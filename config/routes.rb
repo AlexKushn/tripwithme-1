@@ -8,8 +8,6 @@ Tripwithme::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -19,9 +17,13 @@ Tripwithme::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :cars
-  resources :trips
+  resources :trips do
+    resources :comments, only: [:index, :new, :create]
+  end
+  resources :comments, only: [] do
+    path :assign, on: :member
+  end
   resources :users
-  resources :comments
   # Example resource route with options:
   #   resources :products do
   #     member do
@@ -33,7 +35,7 @@ Tripwithme::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-
+  root 'welcome#index'
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

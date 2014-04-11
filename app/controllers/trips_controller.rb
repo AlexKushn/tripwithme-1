@@ -49,6 +49,11 @@ class TripsController < ApplicationController
   private
     # Only allow a trusted parameter "white list" through.
     def trip_params
-      params.require(:trip).permit(:start, :stop, :start_time, :price, :passengers, :description, :rating)
+      params.require(:trip).permit(:start, :stop, :start_time,
+      :price, :passengers, :description, :rating, comments_attributes: comment_params)
+    end
+
+    def comment_params
+      [:id,:text, :_destroy, :author_id, :title]
     end
 end

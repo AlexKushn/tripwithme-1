@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140405043508) do
 
   create_table "comments", force: true do |t|
     t.integer  "author_id"
+    t.integer  "trip_id"
     t.string   "title"
     t.text     "text"
     t.datetime "created_at"
@@ -35,12 +36,13 @@ ActiveRecord::Schema.define(version: 20140405043508) do
   end
 
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
+  add_index "comments", ["trip_id"], name: "index_comments_on_trip_id", using: :btree
 
   create_table "trips", force: true do |t|
     t.string   "start"
     t.string   "stop"
     t.datetime "start_time"
-    t.integer  "price"
+    t.float    "price"
     t.integer  "passengers"
     t.text     "description"
     t.integer  "rating"

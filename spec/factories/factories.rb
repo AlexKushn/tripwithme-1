@@ -5,15 +5,16 @@ FactoryGirl.define do
     stop  { Faker::Address.city }
     start_time { Date.today + rand(20) }
     price      { rand(10) }
-    passengers { rand(5) }
+    passengers { rand(9) +1 }
     description { Faker::Lorem.characters(50) }
-    rating      { rand(5) }
+    rating      { rand(4) }
   end
 
   factory :comment do
-    title { Faker::Lorem.word }
+    association :author, factory: :user
+    association :trip
+    title { Faker::Lorem.words(3).join(' ') }
     text  { Faker::Lorem.characters(100) }
-    association :author, factory: :trip
 
     factory :invalid_comment do
       title nil
@@ -33,9 +34,9 @@ FactoryGirl.define do
   end
 
   factory :car do
+    association :driver, factory: :user
     name { Faker::Lorem.word }
     sits { (rand(9) + 1) }
-    association :driver, factory: :user
 
     factory :invalid_car do
       name nil
