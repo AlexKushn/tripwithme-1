@@ -20,8 +20,6 @@
     <%= f.input :rating %>
     <%= f.fields_for :comments do |comment_form| %>
       <% if comment_form.object.new_record? %>
-        <%= comment_form.association :author, lavel_method: :email,
-                                     value_method: :id %>
         <%= comment_form.input :title %>
         <%= comment_form.input :text, as: :text %>
         <%= comment_form.link_to_remove "Remove this comment" %>

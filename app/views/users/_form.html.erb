@@ -24,7 +24,7 @@
     <%= f.text_field :phone_num %>
   </div>
 
-  <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+  <%= f.collection_select :rol, User::ROLES, :to_s, :humanize %>
   <div class="actions">
     <%= f.submit %>
   </div>

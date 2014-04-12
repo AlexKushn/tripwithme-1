@@ -12,9 +12,9 @@
     </div>
   <% end %>
 
-  <%= f.association :author, label_method: email, value_method: id %>
   <%= f.input :title %>
   <%= f.input :text, as: :text %>
+  <%= f.association :author, label_method: :name, value_method: :id %>
   <%= f.submit %>
 
 <% end %>

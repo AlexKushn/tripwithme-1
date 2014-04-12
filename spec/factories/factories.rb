@@ -30,7 +30,7 @@ FactoryGirl.define do
     phone_num { Faker::PhoneNumber.cell_phone }
     email     { Faker::Internet.email }
     password  { "user_pass#{ Faker::Internet.password }" }
-    role "driver"
+    rol 'driver'
     admin false
   end
 
