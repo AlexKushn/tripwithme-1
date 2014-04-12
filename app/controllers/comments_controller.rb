@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_trip
+  before_action :find_trip, except: [:assign]
   load_and_authorize_resource param_method: :comment_params
 
   def assign

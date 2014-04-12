@@ -21,7 +21,7 @@ Tripwithme::Application.routes.draw do
     resources :comments, only: [:index, :new, :create]
   end
   resources :comments, only: [] do
-    path :assign, on: :member
+    patch :assign, on: :member
   end
   resources :users
   # Example resource route with options:

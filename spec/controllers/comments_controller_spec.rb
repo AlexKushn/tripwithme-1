@@ -3,9 +3,10 @@ require 'spec_helper'
 describe CommentsController do
 
   context 'when user logged in' do
+
     let(:user) { FactoryGirl.create(:user) }
-    let(:trip) { FactoryGirl.create(:trip) }
-    subject { FactoryGirl.create(:comment, trip: trip) }
+    let(:trip) { FactoryGirl.create(:trip, users: user) }
+    subject { FactoryGirl.create(:comment, trips: trip) }
 
     before do
       sign_in user
@@ -34,9 +35,21 @@ describe CommentsController do
         expect(response).to render_template :new
       end
 
-      it 'assgns trip from params' do
+      it 'assigns trip from params' do
         get :new,trip_id: trip.id
         except(assigns(:trip)).to eq(trip)
+      end
+    end
+
+    describe 'PATCH #assign' do
+      it 'assigns the trip assignee to current_user' do
+        patch :assign, id: subject.id
+        expect(subject.reload.assignee).to eq(user)
+      end
+
+      it 'redirect to comment' do
+        patch :assign, id: subject.id
+        expect(responce).to redirect_to trip_comments_path(subject.trip)
       end
     end
 
@@ -65,18 +78,6 @@ describe CommentsController do
           post :create, trip_id: trip.id, comment: FactoryGirl.attributes_for(:invalid_comment)
           expect(response).to render_template :new
         end
-      end
-    end
-
-    describe 'PATCH #assign' do
-      it 'assigns the trip assignee to current_user' do
-        patch :assign, id: subject.id
-        expect(subject.reload.assignee).to eq(user)
-      end
-
-      it 'redirect to comment' do
-        patch :assign, id: subject.id
-        expect(responce).to redirect_to trip_comments_path(subject.trip)
       end
     end
   end

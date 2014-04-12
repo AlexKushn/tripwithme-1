@@ -1,37 +1,42 @@
-<center><h2>Listing trips</h2><center/>
+<center><h2>Listing trips</h2></center>
 
-<table>
+<table class='table'>
   <thead>
-    <tr>
-      <th>Start</th>
-      <th>Stop</th>
-      <th>Start time</th>
-      <th>Price</th>
-      <th>Passengers</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>Start</th>
+    <th>Stop</th>
+    <th>Start time</th>
+    <th>Price</th>
+    <th>Passengers</th>
+    <th>Description</th>
+    <th>Rating</th>
+    <th></th>
+  </tr>
   </thead>
-
   <tbody>
-    <% @trips.each do |trip| %>
+  <% @trips.each do |p| %>
       <tr>
-        <td><%= trip.start %></td>
-        <td><%= trip.stop %></td>
-        <td><%= trip.start_time %></td>
-        <td><%= trip.price %></td>
-        <td><%= trip.passengers %></td>
-        <td><%= trip.description %></td>
-        <td><%= link_to 'Show', trip %></td>
-        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to p.start, trip_path(p) %></td>
+        <td><%= link_to p.stop, trip_path(p) %></td>
+        <td><%= link_to p.start_time, trip_path(p) %></td>
+        <td><%= link_to p.price, trip_path(p) %></td>
+        <td><%= link_to p.passengers, trip_path(p) %></td>
+        <td><%= link_to p.description, trip_path(p) %>
+        <td><%= link_to p.rating, trip_path(p) %></td>
+        <td>
+          <% if can? :update, p %>
+              <%= link_to 'Edit', edit_trip_path(p) %> |
+          <% end %>
+          <% if can? :destroy, p %>
+              <%= link_to 'delete', trip_path(p), method: :delete, data: { confirm: 'sure?' } %> |
+          <% end %>
+          <%= link_to 'comments', trip_comments_path(p) %>
+        </td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
-<br>
+<%= link_to 'New', new_trip_path, class: 'btn' %>
 
-<%= link_to 'New Trip', new_trip_path %>
+

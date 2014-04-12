@@ -1,6 +1,7 @@
 FactoryGirl.define do
 
   factory :trip do
+    users { [FactoryGirl.create(:user)] }
     start { Faker::Address.city }
     stop  { Faker::Address.city }
     start_time { Date.today + rand(20) }

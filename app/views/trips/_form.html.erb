@@ -17,6 +17,7 @@
     <%= f.input :price %>
     <%= f.input :passengers %>
     <%= f.input :description %>
+    <%= f.input :rating %>
     <%= f.fields_for :comments do |comment_form| %>
       <% if comment_form.object.new_record? %>
         <%= comment_form.association :author, lavel_method: :email,
@@ -26,7 +27,8 @@
         <%= comment_form.link_to_remove "Remove this comment" %>
       <% end %>
     <% end %>
-    <p><%= f.link_to_add "Add a comment" :comments %></p>
+    <p><%= f.link_to_add "Add a comment", :comments %></p>
     <%= f.submit %>
 <% end %>
+
 
