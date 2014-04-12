@@ -3,7 +3,6 @@ require 'spec_helper'
 describe CommentsController do
 
   context 'when user logged in' do
-
     let(:user) { FactoryGirl.create(:user) }
     let(:trip) { FactoryGirl.create(:trip, :users => [user]) }
     subject { FactoryGirl.create(:comment, trip: trip) }

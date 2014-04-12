@@ -7,5 +7,6 @@ class Comment < ActiveRecord::Base
 
   delegate :name, to: :author, prefix: true, allow_nil: true
   alias_attribute :name, :title
+
   scope :created_before, -> (time) { where('created_at < ?', time) }
 end

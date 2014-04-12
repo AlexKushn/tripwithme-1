@@ -14,6 +14,7 @@ FactoryGirl.define do
   factory :comment do
     association :author, factory: :user
     association :trip
+
     title { Faker::Lorem.words(3).join(' ') }
     text  { Faker::Lorem.characters(100) }
 

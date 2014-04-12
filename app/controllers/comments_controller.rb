@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   before_action :find_trip
   load_and_authorize_resource param_method: :comment_params
 
+
   # GET /comments
   def index
     @comments = @trip.comments.created_before(Time.now)

@@ -6,7 +6,6 @@ class Trip < ActiveRecord::Base
   validates :price, numericality: { greater_than_or_equal_to: 0.00 },allow_nil: true
   validates :description, length: { maximum: 140 }, allow_nil: true
   validates :rating, numericality: { greater_than_or_equal_to: 0, less_than: 6, only_integer: true }, allow_nil: true
-
   accepts_nested_attributes_for :comments, allow_destroy: true
 end
 
