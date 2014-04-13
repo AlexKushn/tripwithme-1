@@ -1,44 +1,13 @@
-<h1>List of the cars</h1>
+<h2>List of the cars</h2>
 
-<table>
-  <thead>
-  <tr>
-    <th> Model </th>
-    <th> Sits </th>
-    <th> Actions </th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @cars.each do |car| %>
+<table class='table'>
+   <% @cars.each do |car| %>
       <tr>
         <td><%= car.name %></td>
         <td><%= car.sits %></td>
-
-        <td>
-          <% if can? :read, car %>
-            <%= link_to 'Show', car %>
-          <% end %>
-        </td>
-
-        <td>
-          <% if can? :update, car %>
-            <%= link_to 'Edit', edit_car_path(car) %>
-          <% end %>
-        </td>
-
-        <td>
-          <% if can? :destroy, car %>
-            <%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </td>
-
+        <td><%= car.driver_name %></td>
       </tr>
-  <% end %>
-  </tbody>
+   <% end %>
 </table>
-
-
-<br>
-
-<%= link_to 'New Car', new_car_path %>
+<p><%= link_to 'Create new Car', new_user_car_path(@user), class: 'btn' %></p>
+<p><%= link_to 'Go to trip page', trips_path %></p>

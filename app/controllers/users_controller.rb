@@ -49,6 +49,10 @@ class UsersController < ApplicationController
   private
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :surname, :phone_num, :role)
+      params.require(:user).permit(:name, :surname, :phone_num, :role, cars_attributes: car_params)
+    end
+
+    def car_params
+      [:id,:name, :_destroy, :driver_id, :sits]
     end
 end

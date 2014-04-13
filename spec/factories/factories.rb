@@ -14,7 +14,6 @@ FactoryGirl.define do
   factory :comment do
     association :author, factory: :user
     association :trip
-
     title { Faker::Lorem.words(3).join(' ') }
     text  { Faker::Lorem.characters(100) }
 
@@ -31,7 +30,7 @@ FactoryGirl.define do
     phone_num { Faker::PhoneNumber.cell_phone }
     email     { Faker::Internet.email }
     password  { "user_pass#{ Faker::Internet.password }" }
-    rol 'driver'
+    role 'driver'
     admin false
   end
 
