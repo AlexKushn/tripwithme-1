@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  ROLES = %w[driver passenger admin]
+  ROLES = %w[Driver Passenger Admin]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -13,18 +13,19 @@
     <%= f.input :name %>
     <%= f.input :surname %>
     <%= f.input :phone_num %>
-    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
-    <% if @user.role == 'driver' %>
-      <%= f.fields_for :cars do |car_form| %>
-        <% if car_form.object.new_record? %>
-          <%= car_form.input :name %>
-          <%= car_form.input :sits, as: :number %>
-          <%= car_form.link_to_remove 'Remove this car' %>
-        <% end %>
-      <% end %>
-    <% else %>
-    <p><%= f.link_to_add 'Add a car', :cars %></p>
-    <%= f.submit %>
-    <% end %>
-<% end %>
+    <%= f.input :role, as: :radio_buttons,
+        collection: %w['Driver', 'Passenger'] %>
+    <%= f.fields_for :cars do |car_form| %>
 
+        <% if car_form.object.new_record? %>
+            <%= car_form.input :name %>
+            <%= car_form.input :sits, as: :integer %>
+            <%= car_form.link_to_remove 'Remove this car' %>
+        <% end %>
+    <% end %>
+
+    <%= f.submit %>
+
+    <p><%= f.link_to_add 'Add a car', :cars %></p>
+
+<% end %>

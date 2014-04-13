@@ -28,7 +28,7 @@ class CarsController < ApplicationController
 
       # Only allow a trusted parameter "white list" through.
       def find_user
-        @user = User.find(params[:driver_id])
+        @user = User.find(params[:user_id])
       end
 
       def car_params
