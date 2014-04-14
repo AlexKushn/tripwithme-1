@@ -1,4 +1,4 @@
-<h2>Listing users</h2>
+<center><h2>Listing users</h2></center>
 <%= paginate @users %>
 <table class='table'>
   <thead>
@@ -13,19 +13,21 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% @users.each do |u| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.surname %></td>
-        <td><%= user.phone_num %></td>
-        <td><%= user.role %></td>
+        <td><%= link_to u.name,  user_path(u) %></td>
+        <td><%= link_to u.surname,  user_path(u) %></td>
+        <td><%= link_to u.phone_num,  user_path(u) %></td>
+        <td><%= link_to u.role,  user_path(u) %></td>
         <td> <% if can? :update, p %>
-          <%= link_to 'Edit', edit_user_path(user) %> |
+          <%= link_to 'Edit', edit_user_path(u) %> |
           <% end %>
           <% if can? :destroy, p %>
-          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %> |
+          <%= link_to 'Destroy', user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %> |
           <% end %>
-          <% link_to 'Cars', user_cars_path(:id) %></td>
+          <% if u.role == 'Driver' %>
+          <%= link_to 'Cars', user_cars_path(u) %></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>
