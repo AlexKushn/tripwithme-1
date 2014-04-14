@@ -12,9 +12,16 @@ body {
 .form-inputs {
   text-align: center;
 }
+
 .form-actions {
   text-align: center;
 }
+.radio, .checkbox {
+  min-height: 20px;
+  padding-left: 20px;
+  width: 20px;
+}
+
 .table {
   padding-top: center;
   padding-right: center;

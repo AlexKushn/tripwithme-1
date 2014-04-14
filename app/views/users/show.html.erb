@@ -1,4 +1,4 @@
-<h2> User </h2>
+<center><h2> User </h2></center>
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Name:</strong>
@@ -17,13 +17,25 @@
   <%= @user.role %>
 </p>
 <% if @user.role == 'Driver' %>
-<h2> Car </h2>
-<table class='table'>
-<% @user.cars.each do |car| %>
-  <%= car.name %>
-  <%= car.sits %>
-  <%= car.driver.name %>
-<% end %>
-</table>
+    <center><h2> Car </h2></center>
+    <table class='table'>
+      <thead>
+      <tr>
+        <th>Model</th>
+        <th>Sits</th>
+        <th>Driver</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @user.cars.each do |car| %>
+         <tr>
+         <td><%= car.name %></td>
+         <td><%= car.sits %></td>
+         <td><%= car.driver_name %></td>
+         </tr>
+      <% end %>
+      </tbody>
+    </table>
 <% end %>
 <%= link_to 'All user', users_path %>

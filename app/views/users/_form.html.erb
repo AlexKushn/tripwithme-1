@@ -1,4 +1,4 @@
-<%= simple_nested_form_for(@user) do |f| %>
+<%= simple_nested_form_for @user do |f| %>
     <% if @user.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -12,9 +12,8 @@
 
     <%= f.input :name %>
     <%= f.input :surname %>
+    <%= f.input :role, as: :radio_buttons, collection: %w[Driver Passenger] %>
     <%= f.input :phone_num %>
-    <%= f.input :role, as: :radio_buttons,
-                collection: %w[Driver Passenger] %>
     <%= f.fields_for :cars do |car_form| %>
         <% if car_form.object.new_record? %>
             <%= car_form.association :driver, label_method: :name, value_method: :id %>
@@ -23,6 +22,6 @@
             <%= car_form.link_to_remove 'Remove this car' %>
         <% end %>
     <% end %>
-    <%= f.submit %>
     <p><%= f.link_to_add 'Add a car', :cars %></p>
+    <%= f.submit %>
 <% end %>
