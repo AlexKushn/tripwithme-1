@@ -1,17 +1,14 @@
-<h1>Listing users</h1>
+<h2>Listing users</h2>
 <%= paginate @users %>
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Name</th>
       <th>Surname</th>
       <th>Phone number</th>
       <th>Role</th>
+      <th>Actions</th>
       <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-
     </tr>
   </thead>
 
@@ -22,9 +19,13 @@
         <td><%= user.surname %></td>
         <td><%= user.phone_num %></td>
         <td><%= user.role %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> <% if can? :update, p %>
+          <%= link_to 'Edit', edit_user_path(user) %> |
+          <% end %>
+          <% if can? :destroy, p %>
+          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %> |
+          <% end %>
+          <% link_to 'Cars', user_cars_path(:id) %></td>
       </tr>
     <% end %>
   </tbody>

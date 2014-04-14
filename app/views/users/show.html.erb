@@ -1,23 +1,27 @@
+<h2> User </h2>
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
-
 <p>
   <strong>Surname:</strong>
   <%= @user.surname %>
 </p>
-
 <p>
   <strong>Phone num:</strong>
   <%= @user.phone_num %>
 </p>
-
 <p>
   <strong>Role:</strong>
   <%= @user.role %>
 </p>
+<h2> Car </h2>
+<% @user.cars.each do |car| %>
+  <%= car.name %>
+  <%= car.sits %>
+  <%= car.driver.name %>
+<% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
