@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
   message: " only valid nubember"}, allow_nil: true
   validates :role, inclusion: { in: %w(Driver Passenger), message: "%{value} is not a valid"}, allow_nil: true
   accepts_nested_attributes_for :cars, allow_destroy: true
+
+  def role?(base_role)
+    ROLES.index(base_role.to_s) <= ROLES.index(role)
+  end
 end
