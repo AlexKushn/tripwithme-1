@@ -91,6 +91,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.2)
+    nested_form (0.3.2)
     netrc (0.7.7)
     orm_adapter (0.5.0)
     pg (0.17.1)
@@ -106,6 +107,7 @@ GEM
     pry-remote (0.1.8)
       pry (~> 0.9)
       slop (~> 3.0)
+    psych (2.0.5)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -157,9 +159,9 @@ GEM
       rdoc (~> 4.0, < 5.0)
     shoulda-matchers (2.5.0)
       activesupport (>= 3.0.0)
-    simple_form (3.0.1)
-      actionpack (>= 4.0.0, < 4.1)
-      activemodel (>= 4.0.0, < 4.1)
+    simple_form (3.0.2)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     slop (3.5.0)
     spork (0.9.2)
     sprockets (2.11.0)
@@ -209,11 +211,13 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 0.15.1)
   libnotify
+  nested_form
   pg
   pry
   pry-nav
   pry-rails
   pry-remote
+  psych
   rails (= 4.0.4)
   rails_12factor (= 0.0.2)
   rspec-rails

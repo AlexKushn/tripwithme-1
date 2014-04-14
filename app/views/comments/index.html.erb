@@ -1,29 +1,14 @@
-<h1>Listing comments</h1>
+<h2>Listing comments</h2>
 
-<table>
-  <thead>
+<table class='table'>
+  <% @comments.each do |comment| %>
     <tr>
-      <th>Title</th>
-      <th>Text</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <td><%= comment.name %></td>
+      <td><%= comment.text %></td>
+      <td><%= comment.author_name %></td>
     </tr>
-  </thead>
-
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.title %></td>
-        <td><%= comment.text %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <% end %>
 </table>
 
-<br>
-
-<%= link_to 'New Comment', new_comment_path %>
+<p><%= link_to 'Create new comment', new_trip_comment_path(@trip), class: 'btn' %></p>
+<p><%= link_to 'Go to trip page', trips_path %></p>

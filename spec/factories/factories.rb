@@ -1,19 +1,22 @@
 FactoryGirl.define do
 
   factory :trip do
+    users { [FactoryGirl.create(:user)] }
     start { Faker::Address.city }
     stop  { Faker::Address.city }
     start_time { Date.today + rand(20) }
     price      { rand(10) }
-    passengers { rand(5) }
+    passengers { rand(9) +1 }
     description { Faker::Lorem.characters(50) }
-    rating      { rand(5) }
+    rating      { rand(4) }
   end
 
   factory :comment do
-    title { Faker::Lorem.word }
+    association :author, factory: :user
+    association :trip
+
+    title { Faker::Lorem.words(3).join(' ') }
     text  { Faker::Lorem.characters(100) }
-    association :author, factory: :trip
 
     factory :invalid_comment do
       title nil
@@ -28,14 +31,14 @@ FactoryGirl.define do
     phone_num { Faker::PhoneNumber.cell_phone }
     email     { Faker::Internet.email }
     password  { "user_pass#{ Faker::Internet.password }" }
-    role "driver"
+    rol 'driver'
     admin false
   end
 
   factory :car do
+    association :driver, factory: :user
     name { Faker::Lorem.word }
     sits { (rand(9) + 1) }
-    association :driver, factory: :user
 
     factory :invalid_car do
       name nil

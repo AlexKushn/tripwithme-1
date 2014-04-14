@@ -8,6 +8,8 @@ gem 'devise'
 gem 'simple_form'
 gem 'kaminari', '~> 0.15.1'
 gem 'heroku'
+gem 'nested_form'
+gem 'psych'
 
 group :development, :test do
   gem 'pry-rails'
