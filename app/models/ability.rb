@@ -12,8 +12,7 @@ class Ability
     if user.role == 'Passenger'
       can [:read, :create], Comment
       can [:update, :destroy], Comment, author: user
-      can [:read, :create], Trip
-      can [:update, :destroy], Trip
+      can [:read], Trip
     end
 
     if user.role == 'Admin'
