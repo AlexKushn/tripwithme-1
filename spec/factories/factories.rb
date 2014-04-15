@@ -30,14 +30,14 @@ FactoryGirl.define do
     phone_num { Faker::PhoneNumber.cell_phone }
     email     { Faker::Internet.email }
     password  { "user_pass#{ Faker::Internet.password }" }
-    role 'driver'
+    role 'Driver'
     admin false
   end
 
   factory :car do
     association :driver, factory: :user
     name { Faker::Lorem.word }
-    sits { (rand(9) + 1) }
+    sits { (rand(9) + 1)/1 }
 
     factory :invalid_car do
       name nil
