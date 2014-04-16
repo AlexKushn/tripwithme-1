@@ -16,9 +16,8 @@
     <%= f.input :phone_num %>
     <%= f.fields_for :cars do |car_form| %>
         <% if car_form.object.new_record? %>
-            <%= car_form.association :driver, label_method: :name, value_method: :id %>
-            <%= car_form.input :name %>
-            <%= car_form.input :sits, as: :integer %>
+            <%= car_form.input :car_name %>
+            <%= car_form.input :sit, as: :integer %>
             <%= car_form.link_to_remove 'Remove this car' %>
         <% end %>
     <% end %>

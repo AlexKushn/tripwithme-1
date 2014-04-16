@@ -5,7 +5,7 @@ class CarsController < ApplicationController
 
   # GET /cars
   def index
-    @cars = @user.cars.includes(:driver)
+    @cars = Car.includes(:driver)
   end
 
   # GET /cars/new
@@ -13,16 +13,36 @@ class CarsController < ApplicationController
     @car = Car.new
   end
 
+  def show
+    @cars = Car.includes(params[:driver_id])
+  end
+
+  def edit
+  end
+
   # POST /cars
   def create
     @car = @user.cars.new(car_params)
-
     if @car.save
       redirect_to user_cars_path(@user)
     else
       render :new
     end
   end
+
+  def update
+    if @car.update(car_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @car.destroy
+    redirect_to user_path(@user)
+  end
+
 
   private
 
@@ -32,6 +52,6 @@ class CarsController < ApplicationController
       end
 
       def car_params
-        params.require(:car).permit(:name, :sits, :driver_id)
+        params.require(:car).permit(:car_name, :sit, :driver_id)
       end
 end

@@ -11,9 +11,8 @@
   <% end %>
 
 
-    <%= f.input :name, as: :text %><br>
-    <%= f.input :sits, as: :integer %><br>
-    <%= f.association :driver, label_method: :name, value_method: :id %><br>
+    <%= f.input :car_name %><br>
+    <%= f.input :sit, as: :integer %><br>
     <%= f.submit %>
 
 <% end %>

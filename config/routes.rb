@@ -22,7 +22,7 @@ Tripwithme::Application.routes.draw do
   end
 
   resources :users do
-    resources :cars, only: [:index, :new, :create]
+    resources :cars
   end
   # Example resource route with options:
   #   resources :products do

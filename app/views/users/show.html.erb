@@ -24,16 +24,24 @@
         <th>Model</th>
         <th>Sits</th>
         <th>Driver</th>
+        <th>Action</th>
         <th></th>
       </tr>
       </thead>
       <tbody>
       <% @user.cars.each do |car| %>
-         <tr>
-         <td><%= car.name %></td>
-         <td><%= car.sits %></td>
-         <td><%= car.driver_name %></td>
-         </tr>
+          <tr>
+            <td><%= car.car_name %></td>
+            <td><%= car.sit %></td>
+            <td><%= car.driver_name %></td>
+            <td><% if can? :update, p %>
+                <%= link_to 'Edit', edit_user_car_path(@user, car), action: "edit" %> |
+            <% end %>
+            <% if can? :destroy, p %>
+                <%= link_to 'delete', user_car_path(@user, car), method: :delete, data: {confirm: 'sure?'} %> |
+            <% end %>
+            </td>
+          </tr>
       <% end %>
       </tbody>
     </table>

@@ -26,7 +26,7 @@
           <%= link_to 'Destroy', user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %> |
           <% end %>
           <% if u.role == 'Driver' %>
-          <%= link_to 'Cars', user_cars_path(u) %></td>
+          <%= link_to 'Cars', user_path(u) %></td>
           <% end %>
       </tr>
     <% end %>

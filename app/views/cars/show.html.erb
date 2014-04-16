@@ -15,8 +15,9 @@
         <td><%= car.car_name %></td>
         <td><%= car.sit %></td>
         <td><%= car.driver_name %></td>
-      </tr>
+       </tr>
   <% end %>
   </tbody>
 </table>
+<p><%= link_to 'Create new Car', new_user_car_path(@user), class: 'btn' %></p>
 <p><%= link_to 'Go to user page', users_path %></p>
