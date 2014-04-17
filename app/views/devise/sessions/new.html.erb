@@ -4,9 +4,9 @@
   <div class="form-inputs">
     <p><%= f.input :email, required: false, autofocus: true %></p>
     <p><%= f.input :password, required: false %></p>
-    <p><% if devise_mapping.rememberable? %>
-        <center><%= f.input :remember_me, as: :boolean %></center>
-       <% end %></p>
+    <% if devise_mapping.rememberable? %>
+        <p><center><%= f.input :remember_me, as: :boolean %></center></p>
+       <% end %>
   </div>
 
   <div class="form-actions">

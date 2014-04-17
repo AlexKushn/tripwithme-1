@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!
+
   load_and_authorize_resource param_method: :trip_params
 
   # GET /trips
@@ -46,7 +47,7 @@ class TripsController < ApplicationController
   end
 
   private
-    # Only allow a trusted parameter "white list" through.
+
     def trip_params
       params.require(:trip).permit(:start, :stop, :start_time,
       :price, :passenger, :description, :rating, comments_attributes: comment_params)

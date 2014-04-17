@@ -30,13 +30,16 @@
           <% if can? :destroy, p %>
               <%= link_to 'delete', trip_path(p), method: :delete, data: { confirm: 'sure?' } %> |
           <% end %>
+          <% if current_user.role == 'Passenger' %>
           <%= link_to 'comments', trip_comments_path(p) %>
+          <% end %>
         </td>
       </tr>
   <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New', new_trip_path, class: 'btn' %>
+<% if current_user.role == 'Driver' %>
+    <%= link_to 'New', new_trip_path, class: 'btn' %>
+<% end %>
 
 

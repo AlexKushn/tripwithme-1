@@ -34,10 +34,10 @@
             <td><%= car.car_name %></td>
             <td><%= car.sit %></td>
             <td><%= car.driver_name %></td>
-            <td><% if can? :update, p %>
+            <td><% if can? :update, car %>
                 <%= link_to 'Edit', edit_user_car_path(@user, car), action: "edit" %> |
             <% end %>
-            <% if can? :destroy, p %>
+            <% if can? :destroy, car %>
                 <%= link_to 'delete', user_car_path(@user, car), method: :delete, data: {confirm: 'sure?'} %> |
             <% end %>
             </td>
@@ -46,4 +46,5 @@
       </tbody>
     </table>
 <% end %>
+
 <%= link_to 'All user', users_path %>

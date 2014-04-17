@@ -16,11 +16,11 @@
     <%= f.input :phone_num %>
     <%= f.fields_for :cars do |car_form| %>
         <% if car_form.object.new_record? %>
-            <%= car_form.input :car_name %>
-            <%= car_form.input :sit, as: :integer %>
-            <%= car_form.link_to_remove 'Remove this car' %>
-        <% end %>
-    <% end %>
+              <%= car_form.input :car_name %>
+              <%= car_form.input :sit, as: :integer %>
+              <%= car_form.link_to_remove 'Remove this car' %>
+            <% end %>
+         <% end %>
     <p><%= f.link_to_add 'Add a car', :cars %></p>
-    <%= f.submit %>
+<%= f.submit %>
 <% end %>

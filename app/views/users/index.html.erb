@@ -19,10 +19,10 @@
         <td><%= link_to u.surname,  user_path(u) %></td>
         <td><%= link_to u.phone_num,  user_path(u) %></td>
         <td><%= link_to u.role,  user_path(u) %></td>
-        <td> <% if can? :update, p %>
+        <td> <% if can? :update, u %>
           <%= link_to 'Edit', edit_user_path(u) %> |
           <% end %>
-          <% if can? :destroy, p %>
+          <% if can? :destroy, u %>
           <%= link_to 'Destroy', user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %> |
           <% end %>
           <% if u.role == 'Driver' %>
