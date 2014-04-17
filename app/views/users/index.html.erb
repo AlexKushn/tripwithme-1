@@ -13,20 +13,20 @@
   </thead>
 
   <tbody>
-    <% @users.each do |u| %>
+    <% @users.each do |us| %>
       <tr>
-        <td><%= link_to u.name,  user_path(u) %></td>
-        <td><%= link_to u.surname,  user_path(u) %></td>
-        <td><%= link_to u.phone_num,  user_path(u) %></td>
-        <td><%= link_to u.role,  user_path(u) %></td>
-        <td> <% if can? :update, u %>
-          <%= link_to 'Edit', edit_user_path(u) %> |
+        <td><%= link_to us.name,  user_path(us) %></td>
+        <td><%= link_to us.surname,  user_path(us) %></td>
+        <td><%= link_to us.phone_num,  user_path(us) %></td>
+        <td><%= link_to us.role,  user_path(us) %></td>
+        <td> <% if can? :update, us %>
+          <%= link_to 'Edit', edit_user_path(us) %> |
           <% end %>
-          <% if can? :destroy, u %>
-          <%= link_to 'Destroy', user_path(u), method: :delete, data: { confirm: 'Are you sure?' } %> |
+          <% if can? :destroy, us %>
+          <%= link_to 'Destroy', user_path(us), method: :delete, data: { confirm: 'Are you sure?' } %> |
           <% end %>
-          <% if u.role == 'Driver' %>
-          <%= link_to 'Cars', user_path(u) %></td>
+          <% if us.role == 'Driver' %>
+          <%= link_to 'Cars', user_path(us) %></td>
           <% end %>
       </tr>
     <% end %>
