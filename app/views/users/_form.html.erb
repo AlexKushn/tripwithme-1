@@ -1,31 +1,26 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= simple_nested_form_for @user do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :surname %><br>
-    <%= f.text_field :surname %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_num %><br>
-    <%= f.text_field :phone_num %>
-  </div>
-
-  <%= f.collection_select :rol, User::ROLES, :to_s, :humanize %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.input :name %>
+    <%= f.input :surname %>
+    <%= f.input :role, as: :radio_buttons, collection: %w[Driver Passenger] %>
+    <%= f.input :phone_num %>
+    <%= f.fields_for :cars do |car_form| %>
+        <% if car_form.object.new_record? %>
+              <%= car_form.input :car_name %>
+              <%= car_form.input :sit, as: :integer %>
+              <%= car_form.link_to_remove 'Remove this car' %>
+            <% end %>
+         <% end %>
+    <p><%= f.link_to_add 'Add a car', :cars %></p>
+<%= f.submit %>
 <% end %>

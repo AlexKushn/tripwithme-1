@@ -13,6 +13,7 @@
         <li><%= link_to "Help", help_path %></li>
         <% if signed_in? %>
             <li><%= link_to "Users", users_path %></li>
+            <li><%= link_to "Trips", trips_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Account <b class="caret"></b>
@@ -20,6 +21,7 @@
               <ul class="dropdown-menu">
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <%= render 'devise/menu/registration_items' %>
                 <%= render 'devise/menu/login_items' %>
                 <li class="divider"></li>
               </ul>

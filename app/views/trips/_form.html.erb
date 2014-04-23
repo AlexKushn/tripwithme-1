@@ -1,4 +1,4 @@
-<%= simple_nested_form_for(@trip) do |f| %>
+<%= simple_nested_form_for @trip do |f| %>
   <% if @trip.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
@@ -14,18 +14,19 @@
     <%= f.input :stop %>
     <%= f.input :start_time %>
     <%= f.input :price %>
-    <%= f.input :passengers %>
+    <%= f.input :passenger %>
     <%= f.input :description %>
     <%= f.input :rating %>
     <%= f.fields_for :comments do |comment_form| %>
-
       <% if comment_form.object.new_record? %>
         <%= comment_form.input :title %>
         <%= comment_form.input :text, as: :text %>
         <%= comment_form.link_to_remove "Remove this comment" %>
       <% end %>
     <% end %>
+     <% if current_user.role == 'Passenger' && current_user.role == nil %>
     <p><%= f.link_to_add "Add a comment", :comments %></p>
+      <% end %>
     <%= f.submit %>
 <% end %>
 

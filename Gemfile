@@ -10,7 +10,7 @@ gem 'kaminari', '~> 0.15.1'
 gem 'heroku'
 gem 'nested_form'
 gem 'psych'
-
+gem 'validates_timeliness', '~> 3.0'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'

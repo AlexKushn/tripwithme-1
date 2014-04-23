@@ -1,13 +1,23 @@
-<h2>Listing comments</h2>
+<center><h2>Listing comments</h2></center>
 
 <table class='table'>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th>Author</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
   <% @comments.each do |comment| %>
-    <tr>
-      <td><%= comment.name %></td>
-      <td><%= comment.text %></td>
-      <td><%= comment.author_name %></td>
-    </tr>
+      <tr>
+        <td><%= comment.name %></td>
+        <td><%= comment.text %></td>
+        <td><%= comment.author_name %></td>
+      </tr>
   <% end %>
+  </tbody>
 </table>
 
 <p><%= link_to 'Create new comment', new_trip_comment_path(@trip), class: 'btn' %></p>

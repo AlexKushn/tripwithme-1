@@ -1,8 +1,7 @@
-<%= form_for(@car) do |f| %>
+<%= simple_nested_form_for [@user, @car] do |f| %>
   <% if @car.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
-
       <ul>
       <% @car.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,15 +10,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :sits %><br>
-    <%= f.number_field :sits %>
-  </div>
-  <div class="actions">
+
+    <%= f.input :car_name %><br>
+    <%= f.input :sit, as: :integer %><br>
     <%= f.submit %>
-  </div>
+
 <% end %>

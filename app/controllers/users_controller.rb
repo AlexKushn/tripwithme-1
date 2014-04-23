@@ -23,7 +23,6 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
     if @user.save
       redirect_to users_path
     else
@@ -34,7 +33,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to users_path
+      redirect_to user_path
     else
       render :edit
     end
@@ -49,6 +48,10 @@ class UsersController < ApplicationController
   private
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :surname, :phone_num, :role)
+      params.require(:user).permit(:name, :surname, :phone_num, :role, cars_attributes: car_params)
+    end
+
+    def car_params
+      [:id,:car_name, :_destroy, :driver_id, :sit]
     end
 end

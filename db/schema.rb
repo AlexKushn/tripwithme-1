@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405043508) do
+ActiveRecord::Schema.define(version: 20140416170504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cars", force: true do |t|
     t.integer  "driver_id"
-    t.string   "name"
-    t.integer  "sits"
+    t.string   "car_name"
+    t.integer  "sit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140405043508) do
     t.string   "stop"
     t.datetime "start_time"
     t.float    "price"
-    t.integer  "passengers"
+    t.integer  "passenger"
     t.text     "description"
     t.integer  "rating"
     t.datetime "created_at"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140405043508) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "rol"
+    t.string   "role"
     t.boolean  "admin"
   end
 

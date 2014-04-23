@@ -9,6 +9,7 @@
     <th>Passengers</th>
     <th>Description</th>
     <th>Rating</th>
+    <th>Actions</th>
     <th></th>
   </tr>
   </thead>
@@ -19,7 +20,7 @@
         <td><%= link_to p.stop, trip_path(p) %></td>
         <td><%= link_to p.start_time, trip_path(p) %></td>
         <td><%= link_to p.price, trip_path(p) %></td>
-        <td><%= link_to p.passengers, trip_path(p) %></td>
+        <td><%= link_to p.passenger, trip_path(p) %></td>
         <td><%= link_to p.description, trip_path(p) %>
         <td><%= link_to p.rating, trip_path(p) %></td>
         <td>
@@ -29,13 +30,16 @@
           <% if can? :destroy, p %>
               <%= link_to 'delete', trip_path(p), method: :delete, data: { confirm: 'sure?' } %> |
           <% end %>
+          <% if current_user.role == 'Passenger' %>
           <%= link_to 'comments', trip_comments_path(p) %>
+          <% end %>
         </td>
       </tr>
   <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New', new_trip_path, class: 'btn' %>
+<% if current_user.role == 'Driver' %>
+    <%= link_to 'New', new_trip_path, class: 'btn' %>
+<% end %>
 
 

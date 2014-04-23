@@ -16,14 +16,14 @@ Tripwithme::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :cars
+
   resources :trips do
     resources :comments, only: [:index, :new, :create]
   end
-  resources :comments, only: [] do
-    patch :assign, on: :member
+
+  resources :users do
+    resources :cars
   end
-  resources :users
   # Example resource route with options:
   #   resources :products do
   #     member do

@@ -1,13 +1,23 @@
-<p id="notice"><%= notice %></p>
+<center><h2>List of the cars</h2></center>
 
-<p>
-  <strong>Name:</strong>
-  <%= @car.name %>
-</p>
-
-<p>
-  <strong>Sits:</strong>
-  <%= @car.sits %>
-</p>
-<%= link_to 'Edit', edit_car_path(@car) %> |
-<%= link_to 'Back', cars_path %>
+<table class='table'>
+  <thead>
+  <tr>
+    <th>Model</th>
+    <th>Sits</th>
+    <th>Driver</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @cars.each do |car| %>
+      <tr>
+        <td><%= car.car_name %></td>
+        <td><%= car.sit %></td>
+        <td><%= car.driver_name %></td>
+       </tr>
+  <% end %>
+  </tbody>
+</table>
+<p><%= link_to 'Create new Car', new_user_car_path(@user), class: 'btn' %></p>
+<p><%= link_to 'Go to user page', users_path %></p>

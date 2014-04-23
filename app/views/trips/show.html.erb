@@ -17,7 +17,7 @@
 </p>
 <p>
   <strong>Passengers:</strong>
-  <%= @trip.passengers %>
+  <%= @trip.passenger %>
 </p>
 <p>
   <strong>Description:</strong>
@@ -27,14 +27,25 @@
   <strong>Rating:</strong>
   <%= @trip.rating %>
 </p>
-<center><h1>Comment</h1></center>
+<center><h2>Comment</h2></center>
 <table class='table'>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th>Author</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
   <% @trip.comments.each do |comment| %>
     <tr>
       <td><%= comment.title %></td>
       <td><%= comment.text %></td>
+      <td><%= comment.author_name %></td>
     </tr>
   <% end %>
+  </tbody>
 </table>
 
 <%= link_to 'All trips', trips_path %>

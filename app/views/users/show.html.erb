@@ -1,23 +1,50 @@
+<center><h2> User </h2></center>
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
-
 <p>
   <strong>Surname:</strong>
   <%= @user.surname %>
 </p>
-
 <p>
   <strong>Phone num:</strong>
   <%= @user.phone_num %>
 </p>
-
 <p>
   <strong>Role:</strong>
-  <%= @user.rol %>
+  <%= @user.role %>
 </p>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% if @user.role == 'Driver' %>
+    <center><h2> Car </h2></center>
+    <table class='table'>
+      <thead>
+      <tr>
+        <th>Model</th>
+        <th>Sits</th>
+        <th>Driver</th>
+        <th>Action</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @user.cars.each do |car| %>
+          <tr>
+            <td><%= car.car_name %></td>
+            <td><%= car.sit %></td>
+            <td><%= car.driver_name %></td>
+            <td><% if can? :update, car %>
+                <%= link_to 'Edit', edit_user_car_path(@user, car), action: "edit" %> |
+            <% end %>
+            <% if can? :destroy, car %>
+                <%= link_to 'delete', user_car_path(@user, car), method: :delete, data: {confirm: 'sure?'} %> |
+            <% end %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
+
+<%= link_to 'All user', users_path %>
