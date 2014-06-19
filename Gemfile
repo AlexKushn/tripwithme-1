@@ -7,10 +7,17 @@ gem 'cancancan', '~> 1.7'
 gem 'devise'
 gem 'simple_form'
 gem 'kaminari', '~> 0.15.1'
-gem 'heroku'
+#gem 'heroku'
 gem 'nested_form'
 gem 'psych'
 gem 'validates_timeliness', '~> 3.0'
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+end
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'
@@ -43,5 +50,6 @@ group :doc do
 end
 
 group :production do
-  gem 'rails_12factor', '0.0.2'
+  #gem 'rails_12factor', '0.0.2'
+  gem 'unicorn'
 end
