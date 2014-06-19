@@ -21,4 +21,8 @@ doc/
 .DS_Store
 app/.DS_Store
 .secret
+/Procfile
+/config/deploy/
+/shared/
+/public/system/
 
