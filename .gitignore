@@ -10,6 +10,7 @@
 /tmp
 
 # Игнорирование прочих ненужных файлов.
+
 database.yml
 doc/
 *.swp
@@ -25,4 +26,3 @@ app/.DS_Store
 /config/deploy/
 /shared/
 /public/system/
-
