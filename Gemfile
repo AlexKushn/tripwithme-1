@@ -12,6 +12,7 @@ gem 'nested_form'
 gem 'psych'
 gem 'validates_timeliness', '~> 3.0'
 gem 'unicorn'
+gem 'foreman'
 group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
