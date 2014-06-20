@@ -1,6 +1,8 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
-
+set :stage, :production
+set :rails_env, :production
+set :user, 'deployer'
 set :repo_url, 'https://github.com/AlexKushn/tripwithme-1.git'
 set :application, 'tripwithme'
 application = 'tripwithme'
