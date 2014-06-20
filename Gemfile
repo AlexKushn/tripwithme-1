@@ -11,7 +11,7 @@ gem 'kaminari', '~> 0.15.1'
 gem 'nested_form'
 gem 'psych'
 gem 'validates_timeliness', '~> 3.0'
-
+gem 'unicorn'
 group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
@@ -51,5 +51,4 @@ end
 
 group :production do
   #gem 'rails_12factor', '0.0.2'
-  gem 'unicorn'
 end
