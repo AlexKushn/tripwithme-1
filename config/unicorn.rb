@@ -23,7 +23,7 @@ stdout_path "/var/www/apps/tripwithme/log/unicorn.stdout.log"
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
 preload_app true
 GC.respond_to?(:copy_on_write_friendly=) and
-    GC.copy_on_write_friendly = true
+    GC.copy_on_write_friendly = false
 
 # Enable this flag to have unicorn test client connections by writing the
 # beginning of the HTTP headers before calling the application.  This
